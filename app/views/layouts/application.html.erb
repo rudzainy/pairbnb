@@ -2,11 +2,58 @@
 <html>
 <head>
   <title>PairBnb</title>
+  <%= favicon_link_tag %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<!-- ### Facebook SDK ### -->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '790703557718862',
+      xfbml      : true,
+      version    : 'v2.5'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+<!-- ### Facebook SDK ends ### -->
+
+	<nav>
+		<div class="logo">
+			<a href="<%= root_path %>"><%= image_tag("waterbnb_logo_white.png", size: "168x32", alt: "Waterbnb") %></a>
+		</div>
+		<div class="nav">
+			<ul>
+				<li class="host">Become a Host</li>
+				<li>Help</li>
+				<% if signed_in? %>
+				  <li><%= current_user.email %></li>
+				  <li><%= button_to 'Sign out', sign_out_path, method: :delete %></li>
+				<% else %>
+					<li>Sign Up</li>
+				  <li><%= link_to 'Log In', sign_in_path %></li>
+				<% end %>
+			</ul>
+		</div>
+	</nav>
+
+
+
+<div id="flash">
+  <% flash.each do |key, value| %>
+    <div class="flash <%= key %>"><%= value %></div>
+  <% end %>
+</div>
 
 <%= yield %>
 

@@ -1,0 +1,19 @@
+<nav>
+	<div class="nav-logo">
+		<a href="<%= root_path %>"><%= image_tag("waterbnb_logo_white.png", size: "168x32", alt: "Waterbnb") %></a>
+	</div>
+	<div class="nav-home">
+		<% if signed_in? %>
+		  <div style="padding-top: 20px; padding-bottom: 20px;"><a href="/users/<%= current_user.id %>"><%= current_user.name %><%= image_tag current_user.image, class: 'avatar avatar' %></a></div>
+		  <div><%= link_to 'Sign out', sign_out_path, method: :delete %></div>
+		<% else %>
+		  <div><%= link_to 'Log In', sign_in_path %></div>
+			<div><%= link_to 'Sign Up', sign_up_path %></div>
+		<% end %>
+		<div>Help</div>
+		<div style="border-left: none;">
+			<span class="host"><a href="#">Become a Host</a></span>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</nav>

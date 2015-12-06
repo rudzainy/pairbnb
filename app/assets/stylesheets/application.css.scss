@@ -10,38 +10,97 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *= require normalize
+ *= require home
  *= require_self
  */
 
+ $dark-grey: #565a5c;
+ $medium-grey: #C4C4C4;
+ $medium-light-grey: #DCE0E0;
+ $light-grey: #f5f5f5;
+
+body {
+	font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+	background-color: $light-grey;
+}
+
 nav {
 	margin: 0;
+	padding: 0;
+}
+
+.nav-logo {
+	float: left;
 	padding: 15px;
 }
 
-.logo {
+.nav-logo-border {
+	border-right: 1px solid $medium-light-grey;
+}
+
+.nav-white {
+	background-color: white;
+}
+
+.nav-search {
+	background: url('search-icon.png') no-repeat;
 	float: left;
+	margin-top: 22px;
+	margin-left: 20px;
+	padding-left: 35px;
+	height: 25px;
+	div {
+		margin: 0;
+		padding: 0;
+		display: inline;
+		font-size: 0.8em;
+		color: $dark-grey;
+	}
 }
 
 .nav {
 	float: right;
-	ul {
-		margin: auto 0;
-		padding: 7px 0;
-		li {
-			color: white;
-			list-style-type: none;
-			display: inline;
-			font-size: .8em;
-			padding: 7px 15px;
-			a {
-				color: white;
-				text-decoration: none;
-			}
-		}
-		.host {
-			border: solid 2px white;
-			border-radius: 2px;
+	margin: 0;
+	padding: 0;
+	div {
+		float: right;
+		text-align: center;
+		color: $dark-grey;
+		display: inline;
+		font-size: .8em;
+		padding: 24px 20px 16px 20px;
+		height: 25px;
+		border-left: 1px solid $medium-light-grey;
+		vertical-align: middle;
+		a, a:visited {
+			color: $dark-grey;
+			text-decoration: none;
 		}
 	}
+	.host {
+		border: solid 2px $medium-grey;
+		border-radius: 2px;
+		padding: 5px 12px;
+	}
+	.host:hover {
+		background-color: rgba(0,0,0,0.05)
+	}
+}
+
+.clearfix {
+	clear: both;
+}
+
+.avatar {
+	width: 24px;
+	height: 24px;
+	border: 2px solid $medium-grey;
+	border-radius: 50%;
+	margin: -3px 0 0 10px;
+	vertical-align: middle;
+}
+
+.center {
+	text-align: center;
 }

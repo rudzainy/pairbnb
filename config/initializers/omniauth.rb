@@ -1,4 +1,4 @@
-OmniAuth.config.logger = Rails.logger
+# OmniAuth.config.logger = Rails.logger
 
 ENV = YAML.load_file('config/fb_keys.yml')
 

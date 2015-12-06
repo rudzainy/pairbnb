@@ -1,30 +1,44 @@
 class User < ActiveRecord::Base
   include Clearance::User
-  validates :email, uniqueness: true, presence: true
 
-  def self.omniauth(auth)
-    #where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
-    where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.name = auth.info.name
-      user.image = auth.info.image
-      user.token = auth.credentials.token
-      user.expires_at = Time.at(auth.credentials.expires_at)
-      user.save!
+  has_many :authentications, :dependent => :destroy
+  # validates :email, uniqueness: true, presence: true
+
+  # def new
+  # end
+
+  # def create
+  # 	@user = User.create(user_params)
+  # 	redirect_to @user 
+  # end
+
+  # def update
+  # end
+
+  # def destroy
+  # end
+
+  def self.create_with_auth_and_hash(authentication,auth_hash)
+    create! do |u|
+      u.name = auth_hash["info"]["name"]
+      u.email = auth_hash["extra"]["raw_info"]["email"]
+      u.image = auth_hash["info"]["image"]
+      u.authentications<<(authentication)
     end
   end
-
-  def new
+  
+  def fb_token
+    x = self.authentications.where(:provider => :facebook).first
+    return x.token unless x.nil?
+  end
+  
+  def password_optional?
+    true
   end
 
-  def create
-  end
+private
 
-  def update
-  end
-
-  def destroy
-  end
-
+		def user_params
+			params.require(:user).permit(:name, :email, :password)
+		end
 end

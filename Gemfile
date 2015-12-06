@@ -27,6 +27,8 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 # Use Clearance for user authorization
 gem 'clearance', '~> 1.12'
+# Use Font Awesome
+gem "font-awesome-rails"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

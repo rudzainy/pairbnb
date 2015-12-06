@@ -1,15 +1,15 @@
-<div id="clearance" class="sign-up">
-  <h2><%= t(".title") %></h2>
+<div id="clearance" class="sign-up center-layout">
+  <a href="/auth/facebook" class="btn icon-btn btn-block btn-large btn-facebook"><span class="icon"><%= fa_icon "facebook" %></span>Sign up with Facebook</a>
+  <hr>
+  <div class="or-hr center-content">or</div>
 
   <%= form_for @user do |form| %>
     <%= render partial: '/users/form', object: form %>
-
-    <div class="submit-field">
-      <%= form.submit %>
-    </div>
-
-    <div class="other-links">
-      <%= link_to t(".sign_in"), sign_in_path %>
-    </div>
+    <br><br>
+    <small>By signing up, I agree to Waterbnb's <a href="#">Terms of Service</a>, <a href="#">Privacy Policy</a>, <a href="#">Guest Refund Policy</a>, and <a href="#">Host Guarantee Terms</a>.</small>
+    <br><br>
+    <%= form.submit 'Sign up', class: 'btn btn-block btn-large btn-pink' %>
+    <hr>
+    Already a Waterbnb member? <%= link_to 'Log in', sign_in_path %>
   <% end %>
 </div>

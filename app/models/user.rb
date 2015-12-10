@@ -4,20 +4,6 @@ class User < ActiveRecord::Base
   has_many :authentications, :dependent => :destroy
   # validates :email, uniqueness: true, presence: true
 
-  # def new
-  # end
-
-  # def create
-  # 	@user = User.create(user_params)
-  # 	redirect_to @user 
-  # end
-
-  # def update
-  # end
-
-  # def destroy
-  # end
-
   def self.create_with_auth_and_hash(authentication,auth_hash)
     create! do |u|
       u.name = auth_hash["info"]["name"]
@@ -35,10 +21,4 @@ class User < ActiveRecord::Base
   def password_optional?
     true
   end
-
-private
-
-		def user_params
-			params.require(:user).permit(:name, :email, :password)
-		end
 end

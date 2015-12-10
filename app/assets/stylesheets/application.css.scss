@@ -92,6 +92,11 @@ hr {
 
 // ---- CSS classes ---- //
 
+.flash {
+	display: inline;
+	margin-top: 15px;
+}
+
 .or-hr {
 	margin-top: -22px;
 	margin-bottom: 8px;
@@ -111,6 +116,10 @@ hr {
 
 .nav-white {
 	background-color: white;
+}
+
+.nav-hover:hover {
+	background-color: $light-grey;
 }
 
 .nav-search {
@@ -260,4 +269,16 @@ hr {
 	font-size: 24px;
 	top: 4px;
 	left: 20px;
+}
+
+// ---- CSS IDs ---- //
+
+#flash {
+	background-color: #c2e4e7;
+	color: $dark-grey;
+	text-align: center;
+	height: 50px;
+	img {
+		margin-top: 15px;
+	}
 }

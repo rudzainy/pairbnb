@@ -16,6 +16,7 @@
     <% end %>
     
     <% if @flash || @notice %>
+    <% byebug %>
       <div id="flash">
         <%= image_tag 'notice_bubble.png' %>
         <% @flash.each do |key, value| %>
@@ -26,7 +27,7 @@
         <% end %>
       </div>
     <% end %>
-    <div class="main-container">
+    <div id="main-container">
       <%= yield %>
     </div>
   </body>

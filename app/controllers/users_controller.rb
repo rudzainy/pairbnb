@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :find_user, only: [:show, :edit]
+	before_action :find_user, only: [:show, :edit, :update]
 
 	def show
 	end
@@ -8,9 +8,7 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		if params[:user][:password] != params[:user][:password_confirmation]
-			redirect_to sign_up_path, :notice => "Password does not match!"
-		else
+		if match_password
 	    @user = User.new(permit_params)
 	    # @user.name = @name
 	    @user.image = "default_avatar.png"
@@ -19,11 +17,23 @@ class UsersController < ApplicationController
 	      sign_in @user
 
 	      # render :json => {:success => true}
-	    else
-	      # render :json => {:success => false}
+	    # else
+	    #   render 'new'
 	    end
+		else
+			render 'new'
+			# redirect_to sign_up_path, :notice => "Password does not match!"
 	  end
   end
+
+  def update
+    if @user.update_attributes(permit_params)
+      flash[:success] = "Profile updated"
+      redirect_to @user
+    else
+      render 'edit'
+    end
+	end
 
   private
 
@@ -48,4 +58,8 @@ class UsersController < ApplicationController
 	  def permit_params
 	    params.require(:user).permit(:name, :email, :encrypted_password, :password, :confirmation_token, :remember_token)
 	  end
+
+	  def match_password
+			true if params[:user][:password] = params[:user][:password_confirmation]
+		end
 end

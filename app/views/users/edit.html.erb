@@ -1,4 +1,22 @@
-<% provide(:button_text, 'Save changes') %>
-<h1>Edit Profile</h1>
-
-<%= render 'form' %>
+<%= form_for @user do |form| %>
+	<div class="form-container">
+		<div class="form-header">
+			Edit Profile
+		</div>
+	
+		<div class="form-body">
+			<%= render 'shared/error_messages', object: form.object %>
+			<table>
+				<tr>
+					<td class="form-label"><%= form.label :name %></td>
+					<td class="form-box"><%= form.text_field :name, class: 'form-control', placeholder: :name, required: true %></td>
+				</tr>
+				<tr>
+					<td class="form-label"><%= form.label :email %></td>
+					<td class="form-box"><%= form.email_field :email, class: 'form-control', placeholder: 'Email Address', required: true %></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<%= form.submit 'Save', class: 'btn btn-block btn-large btn-pink center-layout'%>
+<% end %>

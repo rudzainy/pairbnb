@@ -223,6 +223,7 @@ hr {
 .form-body {
 	padding: 10px 20px 20px 20px;
 	background-color: white;
+	text-align: left;
 }
 
 .form-label {
@@ -233,6 +234,10 @@ hr {
 
 .form-box {
 	width: 70%;
+}
+
+.form-check-box {
+	width: 20px;
 }
 
 .form-control {

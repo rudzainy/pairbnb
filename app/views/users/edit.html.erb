@@ -20,3 +20,16 @@
 	</div>
 	<%= form.submit 'Save', class: 'btn btn-block btn-large btn-pink center-layout'%>
 <% end %>
+<br><br>
+<%= form_for @user, method: 'delete' do |form| %>
+	<div class="form-container">
+		<div class="form-header">
+			Delete account
+		</div>
+	
+		<div class="form-body">
+			<%= form.check_box :name, class: 'form-check-box', required: true %> Confirm deletion
+		</div>
+	</div>
+	<%= form.submit 'Delete account', class: 'btn btn-block btn-large btn-pink center-layout'%>
+<% end %>

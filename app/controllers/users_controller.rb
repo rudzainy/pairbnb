@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :find_user, only: [:show, :edit, :update]
+	before_action :find_user, only: [:show, :edit, :update, :destroy]
 
 	def show
 	end
@@ -10,20 +10,15 @@ class UsersController < ApplicationController
 	def create
 		if match_password
 	    @user = User.new(permit_params)
-	    # @user.name = @name
 	    @user.image = "default_avatar.png"
 
 	    if @user.save #(permit_params)
 	      sign_in @user
-
-	      # render :json => {:success => true}
-	    # else
-	    #   render 'new'
+	      redirect_to root_path and return
 	    end
-		else
-			render 'new'
-			# redirect_to sign_up_path, :notice => "Password does not match!"
-	  end
+		end
+		render 'new'
+		# redirect_to sign_up_path, :notice => "Password does not match!"
   end
 
   def update
@@ -35,21 +30,13 @@ class UsersController < ApplicationController
     end
 	end
 
+	def destroy
+		@user.destroy
+    flash[:success] = "User deleted"
+    redirect_to root_path
+	end
+
   private
-
-	  # def user_from_params
-	  #   user_params = params[:user] || Hash.new
-	  #   @name = params[:user][:name]
-	  #   email = user_params.delete(:email)
-	  #   password = user_params.delete(:password)
-	  #   user_params.delete(:name)
-	  #   user_params.delete(:password_confirmation)
-
-	  #   Clearance.configuration.user_model.new(user_params).tap do |user|
-	  #     user.email = email
-	  #     user.password = password
-	  #   end
-	  # end
 
 		def find_user
 			@user = User.find(params[:id])

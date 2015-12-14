@@ -4,11 +4,11 @@
   <div class="or-hr center-content">or</div>
 
   <%= form_for @user do |form| %>
-    <%= render partial: '/users/form', object: form %>
+    <%= render partial: '/users/form', method: 'post', object: form %>
     <br><br>
     <small>By signing up, I agree to Waterbnb's <a href="#">Terms of Service</a>, <a href="#">Privacy Policy</a>, <a href="#">Guest Refund Policy</a>, and <a href="#">Host Guarantee Terms</a>.</small>
     <br><br>
-    <%= form.submit 'Sign up', class: 'btn btn-block btn-large btn-pink' %>
+    <%= form.submit 'Sign up', class: 'btn btn-block btn-large btn-pink full-width' %>
     <hr>
     Already a Waterbnb member? <%= link_to 'Log in', sign_in_path %>
   <% end %>

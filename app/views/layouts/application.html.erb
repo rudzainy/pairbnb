@@ -1,26 +1,34 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Vacation Rentals, Homes, Apartments & Rooms for Rent - Waterbnb</title>
-  <%= favicon_link_tag %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <% if yield(:page) == 'home' %>
-    <%= render 'nav/home_nav' %>
-  <% else %>
-    <%= render 'nav/nav' %>
-  <% end %>
-
-  <div id="flash">
-    <% flash.each do |key, value| %>
-      <div class="flash <%= key %>"><%= value %></div>
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vacation Rentals, Homes, Apartments & Rooms for Rent - Waterbnb</title>
+    <%= favicon_link_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <% if yield(:page) == 'home' %>
+      <%= render 'nav/home_nav' %>
+    <% else %>
+      <%= render 'nav/nav' %>
     <% end %>
-  </div>
-  <div class="main-container">
-    <%= yield %>
-  </div>
-</body>
+    
+    <% if @flash || @notice %>
+    <% byebug %>
+      <div id="flash">
+        <%= image_tag 'notice_bubble.png' %>
+        <% @flash.each do |key, value| %>
+          <div class="flash <%= key %>"><%= value %></div>
+        <% end %>
+        <% @notice.each do |key, value| %>
+          <div class="flash <%= key %>"><%= value %></div>
+        <% end %>
+      </div>
+    <% end %>
+    <div id="main-container">
+      <%= yield %>
+    </div>
+  </body>
 </html>

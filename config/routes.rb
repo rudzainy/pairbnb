@@ -1,15 +1,13 @@
 Rails.application.routes.draw do
 
   get 'auth/:provider/callback', to: 'sessions#create_from_omniauth'
-  # get 'auth/failure', to: redirect('/')
-  # get 'signout', to: 'sessions#destroy', as: 'signout'
 
-  # resources :sessions, only: [:new, :create, :destroy]
   resource :home, only: [:index]
   resources :users, only: [:show, :edit, :update, :destroy]
 
   resources :users, controller: 'users', only: 'create'
 
+  resources :listings, only: [:index, :new]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

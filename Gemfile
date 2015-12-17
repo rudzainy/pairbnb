@@ -29,6 +29,8 @@ gem 'omniauth-facebook'
 gem 'clearance', '~> 1.12'
 # Use Font Awesome
 gem "font-awesome-rails"
+# Use Acts As Taggable for tagging
+gem 'acts-as-taggable-on'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

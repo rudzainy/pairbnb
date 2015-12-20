@@ -1,0 +1,8 @@
+<h1><%= @listing.title %></h1> by <%= @listing.user.name %>
+
+<p><%= @listing.home_type %>: <%= @listing.description %></p>
+
+<% if current_user.id == @listing.user.id %>
+	<%= link_to 'Edit', edit_listing_path(@listing) %>
+	<%= link_to 'Delete', listing_path(@listing), method: 'delete' %>
+<% end %>

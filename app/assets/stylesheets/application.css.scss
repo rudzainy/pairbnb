@@ -206,6 +206,7 @@ hr {
 	width: 270px;
 	background-color: white;
 	padding: 20px;
+	margin-top: 30px;
 }
 
 .form-container {
@@ -318,7 +319,9 @@ hr {
 
 .big-title {
 	width: 100%;
-	padding-top: 50px;
+	padding: 50px;
+	margin: 0 auto;
+	background-color: white;
 }
 
 .big-title-header {
@@ -329,12 +332,16 @@ hr {
 	margin: 5px auto;
 }
 
+.caps {
+	text-transform: uppercase;
+}
+
 
 
 // ---- CSS IDs ---- //
 
 #main-container {
-	padding: 30px;
+	padding: 0;
 	width: 1020px;
 	margin: 0 auto;
 }

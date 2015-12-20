@@ -1,0 +1,11 @@
+<div>
+  <%= form_for @listing do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control', placeholder: :title, required: true %>
+    <%= f.label :home_type %>
+    <%= f.text_field :home_type, class: 'form-control', placeholder: :home_type, required: true %>
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control', placeholder: :description, required: true %>
+    <%= f.submit %>
+  <% end %>
+</div>

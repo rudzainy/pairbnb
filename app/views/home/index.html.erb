@@ -1,9 +1,14 @@
 <%= provide(:page, 'home') %>
 <div class="fullscreen-bg">
 	<%= video_tag(["home.webm", "home.mp4"], class: "fullscreen-bg__video", poster: "home_videoframe.png", autoplay: true, loop: true )%>
+	<div class="home-search">
+		<form>
+			<input type="text" width="700px" class="form-control" placeholder="Search">
+			<input type="submit" value="Search" class="btn btn-large btn-pink">
+		</form>
+	</div>
 </div>
 <!--div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div-->
-<div class="clearfix"></div>
 
 <% if @listings %>
 	<% @listings.each do |listing| %>

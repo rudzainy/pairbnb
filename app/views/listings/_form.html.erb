@@ -1,19 +1,42 @@
-<div>
-  <%= form_for @listing do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title, class: 'form-control', placeholder: :title, required: true %>
-    <%= f.label :home_type %>
-    <%= f.text_field :home_type, class: 'form-control', placeholder: :home_type, required: true %>
-    <%= f.label :description %>
-    <%= f.text_area :description, class: 'form-control', placeholder: :description, required: true %>
-    <%= f.label :location %>
-    <%= f.text_field :location, class: 'form-control', placeholder: :location%>
-    <%= f.label :guest %>
-    <%= f.number_field :guest, class: 'form-control', min: '0', placeholder: '0' %>
-    <%= f.label :bedroom %>
-    <%= f.number_field :bedroom, class: 'form-control', min: '0', placeholder: '0' %>
-    <%= f.label :price %>
-    <%= f.text_field :price, class: 'form-control', placeholder: :price%>
-    <%= f.submit class: 'btn btn-large btn-pink' %>
-  <% end %>
-</div>
+<%= form_for @listing do |f| %>
+	<div class="form-container">
+		<div class="form-header">
+			New Listing
+		</div>
+	
+		<div class="form-body">
+			<%= render 'shared/error_messages', object: f.object %>
+			<table>
+				<tr>
+					<td class="form-label"><%= f.label :title %></td>
+					<td class="form-box"><%= f.text_field :title, class: 'form-control', placeholder: :title, required: true %></td>
+				</tr>
+				<tr>
+					<td class="form-label"><%= f.label :home_type %></td>
+					<td class="form-box"><%= f.text_field :home_type, class: 'form-control', placeholder: :home_type, required: true %></td>
+				</tr>
+				<tr>
+					<td class="form-label"><%= f.label :description %></td>
+					<td class="form-box"><%= f.text_area :description, class: 'form-control', placeholder: :description, required: true %></td>
+				</tr>
+				<tr>
+					<td class="form-label"><%= f.label :location %></td>
+					<td class="form-box"><%= f.text_field :location, class: 'form-control', placeholder: :location%></td>
+				</tr>
+				<tr>
+					<td class="form-label"><%= f.label :guest %></td>
+					<td class="form-box"><%= f.number_field :guest, class: 'form-control', min: '0', placeholder: '0' %></td>
+				</tr>
+				<tr>
+					<td class="form-label"><%= f.label :bedroom %></td>
+					<td class="form-box"><%= f.number_field :bedroom, class: 'form-control', min: '0', placeholder: '0' %></td>
+				</tr>
+				<tr>
+					<td class="form-label"><%= f.label :price %></td>
+					<td class="form-box"><%= f.text_field :price, class: 'form-control', placeholder: :price%></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<%= f.submit 'Create', class: 'btn btn-block btn-large btn-pink center-layout'%>
+<% end %>

@@ -1,3 +1,4 @@
+<%= provide(:banner, 'listing') %>
 <div id="listing-header">
 	<div id="listing-header-user" class="center-content">
 		<a href="/users/<%= current_user.id %>"><%= image_tag current_user.image, id: 'listing-header-avatar' %><br><%= current_user.name %></a>
@@ -16,7 +17,8 @@
 			<div class="listing-header-detail center-content"><i class="fa fa-bed fa-listing"></i><br><%= pluralize @listing.bedroom, 'bedroom' %></div>
 		</div>
 		<div>
-			<div class="listing-header-detail center-content"><i class="fa fa-cutlery fa-listing"></i><br><%= "Daily breakfast" if @listing.breakfast == true %></div>
+			<div class="listing-header-detail center-content"><i class="fa fa-cutlery fa-listing"></i><br>
+			<%= @listing.breakfast == true ? "Daily breakfast" : "No breakfast" %></div>
 		</div>
 	</div>
 	<div id="listing-header-booking">

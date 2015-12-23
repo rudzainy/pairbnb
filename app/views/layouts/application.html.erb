@@ -27,6 +27,10 @@
         <% end %>
       </div>
     <% end %>
+    <% if yield(:banner).presence %>
+      <div id="banner-<%= yield(:banner) %>">
+      </div>
+    <% end %>
     <div id="main-container">
       <%= yield %>
     </div>

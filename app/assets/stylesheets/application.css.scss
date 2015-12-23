@@ -346,9 +346,16 @@ hr {
 // ---- CSS IDs ---- //
 
 #main-container {
-	padding: 30px;
+	padding: 0px;
 	width: 1020px;
 	margin: 0 auto;
+}
+
+#banner-listing {
+	height: 400px;
+	width: 100%;
+	background: url('temp_property.jpg');
+	background-position: 100% 50%;
 }
 
 #flash {
@@ -417,7 +424,7 @@ width: 55%;
 #listing-header-price {
 	box-sizing: border-box;
 	color: white;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(60,63,64,0.9);
 	margin-top: -40px;
 	height: 40px;
 	padding: 5px 10px;

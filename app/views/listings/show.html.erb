@@ -15,6 +15,9 @@
 		<div>
 			<div class="listing-header-detail center-content"><i class="fa fa-bed fa-listing"></i><br><%= pluralize @listing.bedroom, 'bedroom' %></div>
 		</div>
+		<div>
+			<div class="listing-header-detail center-content"><i class="fa fa-cutlery fa-listing"></i><br><%= "Daily breakfast" if @listing.breakfast == true %></div>
+		</div>
 	</div>
 	<div id="listing-header-booking">
 		<div id="listing-header-price">

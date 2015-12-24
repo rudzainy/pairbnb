@@ -12,10 +12,12 @@
  *
  *= require normalize
  *= require home
+ *= require listing
  *= require_self
  */
 
-@import "font-awesome";
+ @import "setting";
+ @import "font-awesome";
 
 // ---- Add stroke to text ---- //
 
@@ -36,14 +38,6 @@
 @mixin stroke($stroke, $color) {
   text-shadow: stroke($stroke, $color);
 }
-
-// ---- Colour variables ---- //
-
- $dark-grey: #565a5c;
- $medium-grey: #C4C4C4;
- $medium-light-grey: #DCE0E0;
- $light-grey: #f5f5f5;
- $pink: #ff5a5f;
 
 // ---- HTML tags ---- //
 
@@ -354,13 +348,14 @@ hr {
 }
 
 
-
 // ---- CSS IDs ---- //
 
-#main-container {
-	padding: 0px;
-	width: 1020px;
+#main-container, #sub-container {
 	margin: 0 auto;
+}
+
+#sub-container {
+	max-width: 1020px;
 }
 
 #banner-listing {
@@ -392,72 +387,4 @@ hr {
 	padding-right: 12.5px;
 	margin-top: 0;
 }
-
-#listing-header {
-	box-sizing: border-box;
-	width: 100%;
-	height: 150px;
-	background-color: white;
-	padding: 20px;
-	position: relative;
-}
-
-#listing-header-user {
-	float: left;
-	width: 15%;
-}
-
-#listing-header-detail-container {
-float: left;
-width: 55%;
-}
-
-#listing-header-booking {
-	box-sizing: border-box;
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 300px;
-	height: 150px;
-	border-left: 1px solid $medium-light-grey;
-	border-right: 1px solid $medium-light-grey;
-	background-color: white;
-}
-
-#listing-header-price {
-	box-sizing: border-box;
-	color: white;
-	background-color: rgba(60,63,64,0.9);
-	margin-top: -40px;
-	height: 40px;
-	padding: 5px 10px;
-}
-
-.listing-header-detail {
-	float: left;
-	width: 25%;
-}
-
-.fa-listing {
-	font-size: 2em;
-}
-
-.fa-color-yellow {
-	color: #ffb400;
-}
-
-#listing-header-avatar {
-	width: 75px;
-	border-radius: 50%;
-}
-
-#listing-location {
-	margin: -10px 0 10px 0;
-
-}
-
-#listing-body {
-	margin-top: 30px;
-}
-
 

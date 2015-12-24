@@ -1,5 +1,28 @@
-<% if @listings %>
-	<% @listings.each do |listing| %>
-			<%= link_to listing.title, listing_path(listing) %>
-	<% end%>
-<% end %>
+<div id="listing-container">
+	<% if @listings %>
+		<div id="listing-main">
+			<% @listings.each do |listing| %>
+				<div class="listing-item">
+					<div class="listing-item-image">
+						<%= image_tag listing.image %>
+					</div>
+					<div class="listing-item-title">
+						<%= link_to listing.title, listing_path(listing) %>
+					</div>
+					<div class="listing-item-info">
+						<div class="listing-location">
+							<%= listing.home_type %> · <%= listing.location %> · <i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i>
+						</div>
+						<div class="listing-item-user">
+							<a href="/users/<%= listing.user.id %>"><%= image_tag listing.user.image, class: 'listing-item-avatar' %></a>
+						</div>
+					</div>
+				</div>
+			<% end%>
+		</div>
+		<div id="listing-map"></div>
+		<% else %>
+			<p>No listing yet</p>
+			<div class="host"><a href="<%= new_listing_path %>">Become a Host</a></div>
+	<% end %>
+</div>

@@ -1,50 +1,52 @@
 <%= provide(:banner, 'listing') %>
-<div id="listing-header">
-	<div id="listing-header-user" class="center-content">
-		<a href="/users/<%= @listing.user.id %>"><%= image_tag @listing.user.image, id: 'listing-header-avatar' %><br><%= @listing.user.name %></a>
+<div id="sub-container">
+	<div id="listing-header">
+		<div class="listing-header-user center-content">
+			<a href="/users/<%= @listing.user.id %>"><%= image_tag @listing.user.image, class: 'listing-header-avatar' %><br><%= @listing.user.name %></a>
+		</div>
+		<div id="listing-header-detail-container">
+			<h2><%= @listing.title %></h2>
+			<div class="listing-location">
+				<%= @listing.location %> <i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i>
+			</div>
+			<div>
+				<div class="listing-header-detail center-content"><i class="fa fa-home fa-listing"></i><br><%= @listing.home_type %></div>
+			</div>
+			<div>
+				<div class="listing-header-detail center-content"><i class="fa fa-users fa-listing"></i><br><%= pluralize @listing.guest, 'guest' %></div>
+			</div>
+			<div>
+				<div class="listing-header-detail center-content"><i class="fa fa-bed fa-listing"></i><br><%= pluralize @listing.bedroom, 'bedroom' %></div>
+			</div>
+			<div>
+				<div class="listing-header-detail center-content"><i class="fa fa-cutlery fa-listing"></i><br>
+				<%= @listing.breakfast == true ? "Daily breakfast" : "No breakfast" %></div>
+			</div>
+		</div>
+		<div id="listing-header-booking">
+			<div id="listing-header-price">
+				<span style="font-size: 1.5em;">RM<%= @listing.price %></span>
+			</div>
+			<div style="padding: 20px;">
+				<form>
+					<label>Check In</label>
+					<input type="text" class="form-control full-width-92" placeholder="Booking">
+					<input type="submit" value="Instant Book" class="btn btn-large btn-pink full-width">
+				</form>
+			</div>
+		</div>
+		<div class="clearfix"></div>
 	</div>
-	<div id="listing-header-detail-container">
-		<h2><%= @listing.title %></h2>
-		<div id="listing-location">
-			<%= @listing.location %> <i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i>
-		</div>
-		<div>
-			<div class="listing-header-detail center-content"><i class="fa fa-home fa-listing"></i><br><%= @listing.home_type %></div>
-		</div>
-		<div>
-			<div class="listing-header-detail center-content"><i class="fa fa-users fa-listing"></i><br><%= pluralize @listing.guest, 'guest' %></div>
-		</div>
-		<div>
-			<div class="listing-header-detail center-content"><i class="fa fa-bed fa-listing"></i><br><%= pluralize @listing.bedroom, 'bedroom' %></div>
-		</div>
-		<div>
-			<div class="listing-header-detail center-content"><i class="fa fa-cutlery fa-listing"></i><br>
-			<%= @listing.breakfast == true ? "Daily breakfast" : "No breakfast" %></div>
-		</div>
-	</div>
-	<div id="listing-header-booking">
-		<div id="listing-header-price">
-			<span style="font-size: 1.5em;">RM<%= @listing.price %></span>
-		</div>
-		<div style="padding: 20px;">
-			<form>
-				<label>Check In</label>
-				<input type="text" class="form-control full-width-92" placeholder="Booking">
-				<input type="submit" value="Instant Book" class="btn btn-large btn-pink full-width">
-			</form>
-		</div>
-	</div>
-	<div class="clearfix"></div>
-</div>
 
 
-<div id="listing-body">
-	<h3>About this listing</h3>
-	<p><%= @listing.description %></p>
-	<div class="tags"><%= display_tags(@listing) %></div>
+	<div id="listing-body">
+		<h3>About this listing</h3>
+		<p><%= @listing.description %></p>
+		<div class="tags"><%= display_tags(@listing) %></div>
 
-	<% if current_user.id == @listing.user.id %>
-		<%= link_to 'Edit', edit_listing_path(@listing) %>
-		<%= link_to 'Delete', listing_path(@listing), method: 'delete' %>
-	<% end %>
+		<% if current_user.id == @listing.user.id %>
+			<%= link_to 'Edit', edit_listing_path(@listing) %>
+			<%= link_to 'Delete', listing_path(@listing), method: 'delete' %>
+		<% end %>
+	</div>
 </div>

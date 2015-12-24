@@ -15,13 +15,16 @@
       <%= render 'nav/nav' %>
     <% end %>
     
-    <% if @flash || @notice %>
-    <% byebug %>
+    <% if flash.presence %>
       <div id="flash">
         <%= image_tag 'notice_bubble.png' %>
-        <% @flash.each do |key, value| %>
+        <% flash.each do |key, value| %>
           <div class="flash <%= key %>"><%= value %></div>
         <% end %>
+      </div>
+    <% elsif @notice.presence %>
+      <div id="flash">
+        <%= image_tag 'notice_bubble.png' %>
         <% @notice.each do |key, value| %>
           <div class="flash <%= key %>"><%= value %></div>
         <% end %>
@@ -30,6 +33,8 @@
     <% if yield(:banner).presence %>
       <div id="banner-<%= yield(:banner) %>">
       </div>
+    <% else %>
+      <br>
     <% end %>
     <div id="main-container">
       <%= yield %>

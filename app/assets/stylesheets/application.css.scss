@@ -102,12 +102,23 @@ hr {
   margin: 20px 0 10px 0;
 }
 
-// ---- CSS classes ---- //
+// ---- Flash & Notice ---- //
 
 .flash {
-	display: inline;
-	margin-top: 15px;
+	padding: 0 10px;
 }
+
+#flash {
+	box-sizing: border-box;
+	background-color: #c2e4e7;
+	color: $dark-grey;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+// ---- CSS classes ---- //
 
 .or-hr {
 	margin-top: -22px;
@@ -226,17 +237,18 @@ hr {
 }
 
 .form-label {
-	width: 30%;
+	width: 20%;
 	text-align: right;
 	padding-right: 10px;
 }
 
 .form-box {
-	width: 70%;
+	width: 80%;
 }
 
 .form-check-box {
 	width: 20px;
+	margin-left: 87px;
 }
 
 .form-control {
@@ -356,15 +368,6 @@ hr {
 	width: 100%;
 	background: url('temp_property.jpg');
 	background-position: 100% 50%;
-}
-
-#flash {
-	background-color: #c2e4e7;
-	color: $dark-grey;
-	height: 50px;
-	img {
-		margin-top: 15px;
-	}
 }
 
 #sidebar {

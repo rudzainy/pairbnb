@@ -6,14 +6,14 @@
 	
 		<div class="form-body">
 			<%= render 'shared/error_messages', object: f.object %>
-			<table>
+			<table class="full-width">
 				<tr>
 					<td class="form-label"><%= f.label :name %></td>
-					<td class="form-box"><%= f.text_field :name, class: 'form-control', placeholder: :name, required: true %></td>
+					<td class="form-box"><%= f.text_field :name, class: 'form-control full-width-92', placeholder: :name, required: true %></td>
 				</tr>
 				<tr>
 					<td class="form-label"><%= f.label :email %></td>
-					<td class="form-box"><%= f.email_field :email, class: 'form-control', placeholder: 'Email Address', required: true %></td>
+					<td class="form-box"><%= f.email_field :email, class: 'form-control full-width-92', placeholder: 'Email Address', required: true %></td>
 				</tr>
 			</table>
 		</div>

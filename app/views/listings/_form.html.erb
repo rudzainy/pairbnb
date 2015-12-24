@@ -6,34 +6,42 @@
 	
 		<div class="form-body">
 			<%= render 'shared/error_messages', object: f.object %>
-			<table>
+			<table class="full-width">
 				<tr>
 					<td class="form-label"><%= f.label :title %></td>
-					<td class="form-box"><%= f.text_field :title, class: 'form-control', placeholder: :title, required: true %></td>
+					<td class="form-box"><%= f.text_field :title, class: 'form-control full-width-92', placeholder: :title, required: true %></td>
 				</tr>
 				<tr>
 					<td class="form-label"><%= f.label :home_type %></td>
-					<td class="form-box"><%= f.text_field :home_type, class: 'form-control', placeholder: :home_type, required: true %></td>
+					<td class="form-box"><%= f.text_field :home_type, class: 'form-control full-width-92', placeholder: :home_type, required: true %></td>
 				</tr>
 				<tr>
 					<td class="form-label"><%= f.label :description %></td>
-					<td class="form-box"><%= f.text_area :description, class: 'form-control', placeholder: :description, required: true %></td>
+					<td class="form-box"><%= f.text_area :description, class: 'form-control full-width-92', placeholder: :description, required: true %></td>
 				</tr>
 				<tr>
 					<td class="form-label"><%= f.label :location %></td>
-					<td class="form-box"><%= f.text_field :location, class: 'form-control', placeholder: :location%></td>
+					<td class="form-box"><%= f.text_field :location, class: 'form-control full-width-92', placeholder: :location%></td>
 				</tr>
 				<tr>
 					<td class="form-label"><%= f.label :guest %></td>
-					<td class="form-box"><%= f.number_field :guest, class: 'form-control', min: '0', placeholder: '0' %></td>
+					<td class="form-box"><%= f.number_field :guest, class: 'form-control full-width-92', min: '0', placeholder: '0' %></td>
 				</tr>
 				<tr>
 					<td class="form-label"><%= f.label :bedroom %></td>
-					<td class="form-box"><%= f.number_field :bedroom, class: 'form-control', min: '0', placeholder: '0' %></td>
+					<td class="form-box"><%= f.number_field :bedroom, class: 'form-control full-width-92', min: '0', placeholder: '0' %></td>
+				</tr>
+				<tr>
+					<td class="form-label"><%= f.label :tag_list, "Tags (saperate tags using commas)" %></td>
+					<td class="form-box"><%= f.text_field :tag_list, class: 'form-control full-width-92' %></td>
 				</tr>
 				<tr>
 					<td class="form-label"><%= f.label :price %></td>
-					<td class="form-box"><%= f.text_field :price, class: 'form-control', placeholder: :price%></td>
+					<td class="form-box"><%= f.text_field :price, class: 'form-control full-width-92', placeholder: :price %></td>
+				</tr>
+				<tr>
+					<td class="form-label"><%= f.label :breakfast %></td>
+					<td class="form-box"><%= f.check_box :breakfast, class: 'form-check-box', class: 'form-control full-width-92' %></td>
 				</tr>
 			</table>
 		</div>

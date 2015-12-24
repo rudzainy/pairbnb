@@ -1,12 +1,13 @@
 <%= provide(:banner, 'listing') %>
 <div id="listing-header">
 	<div id="listing-header-user" class="center-content">
-		<a href="/users/<%= current_user.id %>"><%= image_tag current_user.image, id: 'listing-header-avatar' %><br><%= current_user.name %></a>
+		<a href="/users/<%= @listing.user.id %>"><%= image_tag @listing.user.image, id: 'listing-header-avatar' %><br><%= @listing.user.name %></a>
 	</div>
 	<div id="listing-header-detail-container">
 		<h2><%= @listing.title %></h2>
-		<div id="listing-location"><%= @listing.location %> <i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i>
-</div>
+		<div id="listing-location">
+			<%= @listing.location %> <i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i>
+		</div>
 		<div>
 			<div class="listing-header-detail center-content"><i class="fa fa-home fa-listing"></i><br><%= @listing.home_type %></div>
 		</div>
@@ -37,11 +38,13 @@
 </div>
 
 
+<div id="listing-body">
+	<h3>About this listing</h3>
+	<p><%= @listing.description %></p>
+	<div class="tags"><%= display_tags(@listing) %></div>
 
-<h3>About this listing</h3>
-<p><%= @listing.description %></p>
-
-<% if current_user.id == @listing.user.id %>
-	<%= link_to 'Edit', edit_listing_path(@listing) %>
-	<%= link_to 'Delete', listing_path(@listing), method: 'delete' %>
-<% end %>
+	<% if current_user.id == @listing.user.id %>
+		<%= link_to 'Edit', edit_listing_path(@listing) %>
+		<%= link_to 'Delete', listing_path(@listing), method: 'delete' %>
+	<% end %>
+</div>

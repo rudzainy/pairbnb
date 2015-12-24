@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :users, controller: 'users', only: 'create'
 
   resources :listings
+
+  get 'tags/:tag', to: 'listings#index', as: :tag
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

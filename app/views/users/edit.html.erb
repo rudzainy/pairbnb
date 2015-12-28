@@ -15,6 +15,25 @@
 					<td class="form-label"><%= f.label :email %></td>
 					<td class="form-box"><%= f.email_field :email, class: 'form-control full-width-92', placeholder: 'Email Address', required: true %></td>
 				</tr>
+				<tr>
+					<td class="form-label"><%= f.label :location %></td>
+					<td class="form-box"><%= f.text_field :location, class: 'form-control full-width-92', placeholder: :location %></td>
+				<tr>
+					<td class="form-label"><%= f.label :state %></td>
+					<td class="form-box"><%= f.text_field :state, class: 'form-control full-width-92', placeholder: :state %></td>
+				</tr>
+				<tr>
+					<td class="form-label"><%= f.label :country %></td>
+					<td class="form-box"><%= f.text_field :country, class: 'form-control full-width-92', placeholder: :country %></td>
+				</tr>
+				<tr>
+					<td class="form-label"><%= f.label :description %></td>
+					<td class="form-box"><%= f.text_area :description, class: 'form-control full-width-92', placeholder: :description %></td>
+				</tr>
+				<tr>
+					<td class="form-label"><%= f.label :avatar %></td>
+					<td class="form-box"><%= f.file_field :avatar, class: 'form-control' %></td>
+				</tr>
 			</table>
 		</div>
 	</div>

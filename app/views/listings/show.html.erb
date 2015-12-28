@@ -2,7 +2,7 @@
 <div id="sub-container">
 	<div id="listing-header">
 		<div class="listing-header-user center-content">
-			<a href="/users/<%= @listing.user.id %>"><%= image_tag @listing.user.image, class: 'listing-header-avatar' %><br><%= @listing.user.name %></a>
+			<a href="/users/<%= @listing.user.id %>"><%= image_tag @listing.user.avatar, class: 'listing-header-avatar' %><br><%= @listing.user.name %></a>
 		</div>
 		<div id="listing-header-detail-container">
 			<h2><%= @listing.title %></h2>

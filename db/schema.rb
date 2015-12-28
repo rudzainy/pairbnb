@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151223025441) do
+ActiveRecord::Schema.define(version: 20151228073547) do
 
   create_table "authentications", force: :cascade do |t|
     t.integer  "user_id"
@@ -65,7 +65,11 @@ ActiveRecord::Schema.define(version: 20151223025441) do
     t.string   "encrypted_password", limit: 128
     t.string   "confirmation_token", limit: 128
     t.string   "remember_token",     limit: 128
-    t.string   "image"
+    t.string   "avatar"
+    t.string   "location"
+    t.string   "state"
+    t.string   "country"
+    t.string   "description"
   end
 
   add_index "users", ["email"], name: "index_users_on_email"

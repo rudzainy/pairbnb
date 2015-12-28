@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   include Clearance::User
 
-  has_many :listings
+  mount_uploader :avatar, AvatarUploader
+
+  has_many :listings, :dependent => :destroy
   has_many :authentications, :dependent => :destroy
   validates :email, uniqueness: true, presence: true
 
@@ -9,7 +11,7 @@ class User < ActiveRecord::Base
     create! do |u|
       u.name = auth_hash["info"]["name"]
       u.email = auth_hash["extra"]["raw_info"]["email"]
-      u.image = auth_hash["info"]["image"]
+      u.avatar = auth_hash["info"]["image"]
       u.authentications<<(authentication)
     end
   end

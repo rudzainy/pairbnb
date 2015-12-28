@@ -4,7 +4,7 @@
 	</div>
 	<div class="nav-home">
 		<% if signed_in? %>
-		  <div style="padding-top: 20px; padding-bottom: 20px;"><a href="/users/<%= current_user.id %>"><%= current_user.name %><%= image_tag current_user.image, class: 'avatar avatar' %></a></div>
+		  <div style="padding-top: 20px; padding-bottom: 20px;"><a href="/users/<%= current_user.id %>"><%= current_user.name %><%= image_tag current_user.avatar, class: 'avatar avatar' %></a></div>
 		  <div><%= link_to 'Sign out', sign_out_path, method: :delete %></div>
 		<% else %>
 		  <div><%= link_to 'Log In', sign_in_path %></div>
@@ -12,7 +12,11 @@
 		<% end %>
 		<div>Help</div>
 		<div style="border-left: none;">
-			<span class="host"><a href="<%= new_listing_path %>">Become a Host</a></span>
+			<% if logged_in? && current_user.listings.empty? %>
+				<span class="host"><a href="<%= new_listing_path %>">Become a Host</a></span>
+			<% else %>
+				<%= link_to 'Host', listings_path %>
+			<% end %>
 		</div>
 	</div>
 	<div class="clearfix"></div>

@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
 	    if @user.save #(permit_params)
 	      sign_in @user
-      	@notice = "User created - confirm or edit details..."
+      	@notice = "Success! Please update your details below."
 	      redirect_to edit_user_path(@user), :notice => @notice and return
 	    end
 		end

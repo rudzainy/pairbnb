@@ -12,10 +12,10 @@
 		<% end %>
 		<div>Help</div>
 		<div style="border-left: none;">
-			<% if logged_in? && current_user.listings.empty? %>
-				<span class="host"><a href="<%= new_listing_path %>">Become a Host</a></span>
-			<% else %>
+			<% if logged_in? && !current_user.listings.empty? %>
 				<%= link_to 'Host', listings_path %>
+			<% else %>
+				<span class="host"><a href="<%= new_listing_path %>">Become a Host</a></span>
 			<% end %>
 		</div>
 	</div>

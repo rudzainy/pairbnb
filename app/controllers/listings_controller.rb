@@ -18,6 +18,7 @@ class ListingsController < ApplicationController
 
 	def create
 		@listing = current_user.listings.new(listing_params)
+		byebug
 		if @listing.save
 			redirect_to @listing, notice: "Listing created."
 		else
@@ -51,6 +52,6 @@ class ListingsController < ApplicationController
 	private
 
 		def listing_params
-			params.require(:listing).permit(:title, :home_type, :description, :home_type, :location, :guest, :bedroom, :price, :image, :tag_list)
+			params.require(:listing).permit(:title, :home_type, :description, :home_type, :location, :guest, :bedroom, :price, {images: []}, :tag_list, :breakfast)
 		end
 end

@@ -26,14 +26,14 @@ ActiveRecord::Schema.define(version: 20151228073547) do
     t.integer  "user_id"
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "home_type"
     t.string   "location"
     t.integer  "guest"
     t.integer  "bedroom"
     t.integer  "price"
-    t.string   "image"
+    t.string   "images",      default: "--- []\n"
     t.boolean  "breakfast"
   end
 

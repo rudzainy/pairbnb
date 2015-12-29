@@ -1,35 +1,54 @@
-<%= form_for @user do |form| %>
+<%= form_for @user do |f| %>
 	<div class="form-container">
 		<div class="form-header">
 			Edit Profile
 		</div>
 	
 		<div class="form-body">
-			<%= render 'shared/error_messages', object: form.object %>
-			<table>
+			<%= render 'shared/error_messages', object: f.object %>
+			<table class="full-width">
 				<tr>
-					<td class="form-label"><%= form.label :name %></td>
-					<td class="form-box"><%= form.text_field :name, class: 'form-control', placeholder: :name, required: true %></td>
+					<td class="form-label"><%= f.label :name %></td>
+					<td class="form-box"><%= f.text_field :name, class: 'form-control full-width-92', placeholder: :name, required: true %></td>
 				</tr>
 				<tr>
-					<td class="form-label"><%= form.label :email %></td>
-					<td class="form-box"><%= form.email_field :email, class: 'form-control', placeholder: 'Email Address', required: true %></td>
+					<td class="form-label"><%= f.label :email %></td>
+					<td class="form-box"><%= f.email_field :email, class: 'form-control full-width-92', placeholder: 'Email Address', required: true %></td>
+				</tr>
+				<tr>
+					<td class="form-label"><%= f.label :location %></td>
+					<td class="form-box"><%= f.text_field :location, class: 'form-control full-width-92', placeholder: :location %></td>
+				<tr>
+					<td class="form-label"><%= f.label :state %></td>
+					<td class="form-box"><%= f.text_field :state, class: 'form-control full-width-92', placeholder: :state %></td>
+				</tr>
+				<tr>
+					<td class="form-label"><%= f.label :country %></td>
+					<td class="form-box"><%= f.text_field :country, class: 'form-control full-width-92', placeholder: :country %></td>
+				</tr>
+				<tr>
+					<td class="form-label"><%= f.label :description %></td>
+					<td class="form-box"><%= f.text_area :description, class: 'form-control full-width-92', placeholder: :description %></td>
+				</tr>
+				<tr>
+					<td class="form-label"><%= f.label :avatar %></td>
+					<td class="form-box"><%= f.file_field :avatar, class: 'form-control full-width-92' %></td>
 				</tr>
 			</table>
 		</div>
 	</div>
-	<%= form.submit 'Save', class: 'btn btn-block btn-large btn-pink center-layout'%>
+	<%= f.submit 'Save', class: 'btn btn-block btn-large btn-pink center-layout'%>
 <% end %>
 <br><br>
-<%= form_for @user, method: 'delete' do |form| %>
+<%= form_for @user, method: 'delete' do |f| %>
 	<div class="form-container">
 		<div class="form-header">
 			Delete account
 		</div>
 	
 		<div class="form-body">
-			<%= form.check_box :name, class: 'form-check-box', required: true %> Confirm deletion
+			<%= f.check_box :name, class: 'form-check-box', required: true %> Confirm deletion
 		</div>
 	</div>
-	<%= form.submit 'Delete account', class: 'btn btn-block btn-large btn-pink center-layout'%>
+	<%= f.submit 'Delete account', class: 'btn btn-block btn-large btn-pink center-layout'%>
 <% end %>

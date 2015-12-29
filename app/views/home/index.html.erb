@@ -1,6 +1,19 @@
 <%= provide(:page, 'home') %>
 <div class="fullscreen-bg">
 	<%= video_tag(["home.webm", "home.mp4"], class: "fullscreen-bg__video", poster: "home_videoframe.png", autoplay: true, loop: true )%>
+	<div class="home-search center-content">
+		<form>
+			<input type="text" class="form-control" placeholder="Search" style="width:60%;">
+			<input type="submit" value="Search" class="btn btn-large btn-pink">
+		</form>
+	</div>
 </div>
-
 <!--div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div-->
+
+<% if @listings %>
+	<% @listings.each do |listing| %>
+		<div class="listing">
+			<%= link_to listing.title, listing_path(listing) %>
+		</div>
+	<% end%>
+<% end %>

@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use pg as the database for Active Record
+gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -28,7 +28,12 @@ gem 'omniauth-facebook'
 # Use Clearance for user authorization
 gem 'clearance', '~> 1.12'
 # Use Font Awesome
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
+# Use Acts As Taggable for tagging
+gem 'acts-as-taggable-on'
+# Image upload stuffs
+gem 'carrierwave'
+gem 'mini_magick'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

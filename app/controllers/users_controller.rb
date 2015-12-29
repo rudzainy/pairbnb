@@ -10,11 +10,12 @@ class UsersController < ApplicationController
 	def create
 		if match_password
 	    @user = User.new(permit_params)
-	    @user.image = "default_avatar.png"
+	    # @user.avatar = "default_avatar.png"
 
 	    if @user.save #(permit_params)
 	      sign_in @user
-	      redirect_to root_path and return
+      	@notice = "Success! Please update your details below."
+	      redirect_to edit_user_path(@user), :notice => @notice and return
 	    end
 		end
 		render 'new'
@@ -43,7 +44,7 @@ class UsersController < ApplicationController
 		end
 
 	  def permit_params
-	    params.require(:user).permit(:name, :email, :encrypted_password, :password, :confirmation_token, :remember_token)
+	    params.require(:user).permit(:name, :email, :encrypted_password, :password, :confirmation_token, :remember_token, :avatar, :location, :state, :country, :description)
 	  end
 
 	  def match_password

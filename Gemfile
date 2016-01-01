@@ -32,7 +32,7 @@ gem 'font-awesome-rails'
 # Use Acts As Taggable for tagging
 gem 'acts-as-taggable-on'
 # Image upload stuffs
-gem 'carrierwave'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'mini_magick'
 
 # Use ActiveModel has_secure_password

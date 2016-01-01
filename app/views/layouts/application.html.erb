@@ -31,7 +31,7 @@
       </div>
     <% end %>
     <% if yield(:banner).presence %>
-      <div id="banner-<%= yield(:banner) %>">
+      <div id="banner-<%= yield(:banner) %>" style="background: url(<%= yield(:banner_image) if !yield(:banner_image).nil? %>); background-size: cover; background-position: 100% 50%;">
       </div>
     <% else %>
       <br>

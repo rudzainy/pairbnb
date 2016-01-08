@@ -45,9 +45,14 @@
 		<p><%= @listing.description %></p>
 		<div class="tags"><%= display_tags(@listing) %></div>
 
-		<% if current_user.id == @listing.user.id %>
+		<% if !current_user.nil? and current_user.id == @listing.user.id %>
 			<%= link_to 'Edit', edit_listing_path(@listing) %>
 			<%= link_to 'Delete', listing_path(@listing), method: 'delete' %>
 		<% end %>
+		<div id="listing-thumbnail">
+			<% @listing.images.each_with_index do |image, index| %>
+				<%= image_tag @listing.images[index].url, class: 'listing-thumbnail-image' %>
+			<% end %>
+		</div>
 	</div>
 </div>

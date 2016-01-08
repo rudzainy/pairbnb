@@ -41,6 +41,10 @@
 
 // ---- HTML tags ---- //
 
+html, body {
+  height: 100%;
+}
+
 body {
 	font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
 	background-color: $light-grey;
@@ -354,6 +358,16 @@ hr {
 	margin: 0 auto;
 }
 
+#main-container {
+	min-height: 100%;
+  margin-bottom: -55px;
+}
+
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+
 #sub-container {
 	max-width: 1020px;
 }
@@ -388,3 +402,20 @@ hr {
 	margin-top: 0;
 }
 
+footer, #main-container:after {
+  height: 55px; 
+}
+
+footer {
+  width: 100%;
+  background-color: $darker-grey;
+  color: white;
+  padding: 10px 0 0 0;
+  ul {
+    li {
+      margin-right: 20px;
+      list-style: none;
+      display: inline;
+    }
+  }
+}

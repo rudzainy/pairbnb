@@ -10,10 +10,27 @@
 </div>
 <!--div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div-->
 
+<div class="fullscreen-clear"></div>
+
 <% if @listings %>
-	<% @listings.each do |listing| %>
-		<div class="listing">
-			<%= link_to listing.title, listing_path(listing) %>
-		</div>
-	<% end%>
+	<div id="listing-main">
+		<% @listings.each do |listing| %>
+			<div class="listing-item">
+				<div class="listing-item-image">
+					<%= link_to (image_tag listing.images[0]), listing_path(listing) %>
+				</div>
+				<div class="listing-item-title">
+					<%= link_to listing.title, listing_path(listing) %>
+				</div>
+				<div class="listing-item-info">
+					<div class="listing-location">
+						<%= listing.home_type %> · <%= listing.location %> · <i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i>
+					</div>
+					<div class="listing-item-user">
+						<a href="/users/<%= listing.user.id %>"><%= image_tag listing.user.avatar, class: 'listing-item-avatar' %></a>
+					</div>
+				</div>
+			</div>
+		<% end%>
+	</div>
 <% end %>

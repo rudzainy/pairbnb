@@ -3,8 +3,9 @@
 		<div id="listing-main">
 			<% @listings.each do |listing| %>
 				<div class="listing-item">
+					<!--div class="listing-item-image" style="background: url(<%= listing.images[0].url if !listing.images[0].url.nil? %>); background-size: cover; background-position: 100% 50%;"-->
 					<div class="listing-item-image">
-						<%= image_tag listing.image %>
+						<%= link_to (image_tag listing.images[0]), listing_path(listing) %>
 					</div>
 					<div class="listing-item-title">
 						<%= link_to listing.title, listing_path(listing) %>

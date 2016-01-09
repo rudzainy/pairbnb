@@ -13,6 +13,9 @@
  *= require normalize
  *= require home
  *= require listing
+ *= require jquery-ui.min
+ *= require jquery-ui.structure.min
+ *= require jquery-ui.theme.min
  *= require_self
  */
 
@@ -209,6 +212,10 @@ hr {
 	margin: 0 auto;
 }
 
+.right-content {
+	text-align: right;
+}
+
 .sign-up {
 	width: 270px;
 	background-color: white;
@@ -307,6 +314,14 @@ hr {
 
 .full-width-92 {
 	width: 92% !important;
+}
+
+.full-width-80 {
+	width: 83% !important;
+}
+
+.width-58 {
+	width: 58% !important;
 }
 
 .btn-pink:hover {

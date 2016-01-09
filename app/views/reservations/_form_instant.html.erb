@@ -1,0 +1,29 @@
+<%= form_for @reservation do |f| %>
+	<div class="reservation-container">
+		<div class="reservation-item">
+			<%= f.label 'Check In' %><br>
+			<%= f.text_field :checkin, placeholder: 'dd/mm/yyyy', class: 'datepicker form-control full-width-80' %>
+		</div>
+		<div class="reservation-item">
+			<%= f.label 'Check Out' %><br>
+			<%= f.text_field :checkout, placeholder: 'dd/mm/yyyy', class: 'datepicker form-control full-width-80' %>
+		</div>
+	</div>
+	<%= button_tag type: 'submit', class: 'btn btn-large btn-pink full-width' do %>
+		<span class="fa fa-bolt fa-color-yellow"></span>&nbsp;&nbsp;Instant Book
+	<% end %>
+<% end %>
+
+<script type="text/javascript">
+	$(function(){
+    $('.datepicker').datepicker({
+        inline: true,
+        firstDay: 1,
+        dateFormat: 'dd/mm/yy',
+        showOtherMonths: true,
+        dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+        changeMonth: true,
+        changeYear: true
+    });
+	});
+</script>

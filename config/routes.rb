@@ -4,10 +4,9 @@ Rails.application.routes.draw do
 
   resource :home, only: [:index]
   resources :users, only: [:show, :edit, :update, :destroy]
-
   resources :users, controller: 'users', only: 'create'
-
   resources :listings
+  resources :reservations, only: [:create]
 
   get 'tags/:tag', to: 'listings#index', as: :tag
   # The priority is based upon order of creation: first created -> highest priority.

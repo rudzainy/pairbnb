@@ -29,11 +29,7 @@
 				<span style="font-size: 1.5em;">RM<%= @listing.price %></span>
 			</div>
 			<div style="padding: 20px;">
-				<form>
-					<label>Check In</label>
-					<input type="text" class="form-control full-width-92" placeholder="Booking">
-					<input type="submit" value="Instant Book" class="btn btn-large btn-pink full-width">
-				</form>
+				<%= render 'reservations/form_instant' %>
 			</div>
 		</div>
 		<div class="clearfix"></div>

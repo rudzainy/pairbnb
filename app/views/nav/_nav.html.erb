@@ -3,7 +3,9 @@
 		<a href="<%= root_path %>"><%= image_tag("waterbnb_logo.png", size: "168x32", alt: "Waterbnb") %></a>
 	</div>
 	<div class="nav-search">
-		<div>Where are you going?</div>
+		<form action="<%= listings_path %>">
+			<input type="text"placeholder="Where are you going?" name="search">
+		</form>
 	</div>
 	<div class="nav">
 		<% if signed_in? %>

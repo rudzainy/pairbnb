@@ -1,5 +1,8 @@
+<% if logged_in? %>
+	<button class="btn btn-block btn-large btn-pink">Add new listing</button>
+<% end %>
 <div id="listing-container">
-	<% if @listings %>
+	<% if !@listings.nil? %>
 		<div id="listing-main">
 			<% @listings.each do |listing| %>
 				<div class="listing-item">
@@ -12,7 +15,7 @@
 					</div>
 					<div class="listing-item-info">
 						<div class="listing-location">
-							<%= listing.home_type %> · <%= listing.location %> · <i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i>
+							<%= listing.home_type %> · <%= listing.location.capitalize %> · <i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i>
 						</div>
 						<div class="listing-item-user">
 							<a href="/users/<%= listing.user.id %>"><%= image_tag listing.user.avatar, class: 'listing-item-avatar' %></a>

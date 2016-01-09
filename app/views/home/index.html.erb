@@ -1,36 +1,38 @@
 <%= provide(:page, 'home') %>
 <div class="fullscreen-bg">
 	<%= video_tag(["home.webm", "home.mp4"], class: "fullscreen-bg__video", poster: "home_videoframe.png", autoplay: true, loop: true )%>
-	<div class="home-search center-content">
-		<form>
-			<input type="text" class="form-control" placeholder="Search" style="width:60%;">
-			<input type="submit" value="Search" class="btn btn-large btn-pink">
-		</form>
-	</div>
+</div>
+<div class="home-search center-content">
+	<form action="<%= listings_path %>">
+		<input type="text" class="form-control" placeholder="Where do you want to go?" style="width:60%;" name="search">
+		<input type="submit" value="Search" class="btn btn-large btn-pink">
+	</form>
 </div>
 <!--div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div-->
 
-<div class="fullscreen-clear"></div>
+<!-- <div class="fullscreen-clear"></div> -->
 
-<% if @listings %>
-	<div id="listing-main" class="full-width">
-		<% @listings.each do |listing| %>
-			<div class="listing-item">
-				<div class="listing-item-image">
-					<%= link_to (image_tag listing.images[0]), listing_path(listing) %>
-				</div>
-				<div class="listing-item-title">
-					<%= link_to listing.title, listing_path(listing) %>
-				</div>
-				<div class="listing-item-info">
-					<div class="listing-location">
-						<%= listing.home_type %> · <%= listing.location %> · <i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i>
+<div id="listing-container">
+	<% if @listings %>
+		<div id="listing-main" class="full-width">
+			<% @listings.each do |listing| %>
+				<div class="listing-item listing-item-home">
+					<div class="listing-item-image">
+						<%= link_to (image_tag listing.images[0]), listing_path(listing) %>
 					</div>
-					<div class="listing-item-user">
-						<a href="/users/<%= listing.user.id %>"><%= image_tag listing.user.avatar, class: 'listing-item-avatar' %></a>
+					<div class="listing-item-title">
+						<%= link_to listing.title, listing_path(listing) %>
+					</div>
+					<div class="listing-item-info">
+						<div class="listing-location">
+							<%= listing.home_type %> · <%= listing.location.capitalize %> · <i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i>
+						</div>
+						<div class="listing-item-user">
+							<a href="/users/<%= listing.user.id %>"><%= image_tag listing.user.avatar, class: 'listing-item-avatar' %></a>
+						</div>
 					</div>
 				</div>
-			</div>
-		<% end%>
-	</div>
-<% end %>
+			<% end%>
+		</div>
+	<% end %>
+</div>

@@ -153,12 +153,18 @@ hr {
 	margin-left: 20px;
 	padding-left: 35px;
 	height: 25px;
-	div {
+	form {
 		margin: 0;
 		padding: 0;
 		display: inline;
 		font-size: 0.95em;
 		color: $dark-grey;
+		input {
+			border: none;
+		}
+		input:focus {
+			outline-width: 0;
+		}
 	}
 }
 

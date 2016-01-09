@@ -8,7 +8,7 @@
 		<div id="listing-header-detail-container">
 			<h2><%= @listing.title %></h2>
 			<div class="listing-location">
-				<%= @listing.location %> <i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i>
+				<%= @listing.location.capitalize %> <i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i>
 			</div>
 			<div>
 				<div class="listing-header-detail center-content"><i class="fa fa-home fa-listing"></i><br><%= @listing.home_type %></div>

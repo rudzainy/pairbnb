@@ -3,8 +3,10 @@ class ListingsController < ApplicationController
 	def index
 		if params[:tag]
 			@listings = Listing.tagged_with(params[:tag])
+		elsif params[:search]
+			@listings = Listing.where(location: params[:search].downcase)
 		else
-			@listings = Listing.all
+			@listings = current_user.listings.all
 		end
 	end
 
@@ -53,5 +55,6 @@ class ListingsController < ApplicationController
 
 		def listing_params
 			params.require(:listing).permit(:title, :home_type, :description, :home_type, :location, :guest, :bedroom, :price, {images: []}, :tag_list, :breakfast)
+			params[:listing][:location].downcase!
 		end
 end

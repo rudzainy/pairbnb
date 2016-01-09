@@ -1,0 +1,77 @@
+@import "variables";
+
+/* ---- Pagination ---- */
+
+.digg_pagination {
+  padding-left: 20px;
+  cursor: default;
+  /* self-clearing method: */ 
+}
+
+.digg_pagination a, .digg_pagination span, .digg_pagination em {
+  padding: 0.5em 0.75em;
+  display: block;
+  float: left;
+  margin-right: 10px; 
+}
+
+.digg_pagination .disabled, .digg_pagination .current, .digg_pagination a {
+  border-radius: 1px;
+}
+
+.digg_pagination .disabled {
+  color: $pink;
+  border: 1px solid $medium-light-grey; 
+  background-color: white;
+}
+
+.digg_pagination .current {
+  font-style: normal;
+  font-weight: bold;
+  background: $light-grey;
+  color: $dark-grey;
+  border: 1px solid $medium-light-grey; 
+}
+
+.digg_pagination a {
+  text-decoration: none;
+  background-color: white;
+  color: #ff5a5f;
+  border: 1px solid $medium-light-grey; 
+}
+
+.digg_pagination a:hover, .digg_pagination a:focus {
+  border-color: $medium-grey; 
+  text-decoration: none;
+}
+
+.digg_pagination .page_info {
+  // background: #2e6ab1;
+  // color: white;
+  // padding: 0.4em 0.6em;
+  width: 22em;
+  margin-bottom: 0.3em;
+  // text-align: center; 
+}
+
+.digg_pagination .page_info b {
+  // color: #000033;
+  // background: #6aa6ed;
+  // padding: 0.1em 0.25em; 
+}
+
+.digg_pagination:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden; 
+}
+
+* html .digg_pagination {
+  height: 1%; 
+}
+
+*:first-child + html .digg_pagination {
+  overflow: hidden; 
+}

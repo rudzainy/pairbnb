@@ -50,6 +50,12 @@
 				<p>No listing yet</p>
 			<% end %>
 		</div>
+		<div class="digg_pagination">
+	    <div class="page_info">
+	      <%= page_entries_info @listings %>
+	    </div>
+	    <%= will_paginate @listings, :container => false, previous_label: "&#9664;", next_label: "&#9654;" %>
+	  </div>	
 	</div>
 	<div id="listing-map">
 		<div id="listing-map-canvas"></div>

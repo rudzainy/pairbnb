@@ -2,11 +2,11 @@ class ListingsController < ApplicationController
 
 	def index
 		if params[:tag]
-			@listings = Listing.tagged_with(params[:tag])
+			@listings = Listing.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 6).order('created_at DESC')
 		elsif params[:search]
-			@listings = Listing.where(location: params[:search].downcase)
+			@listings = Listing.where(location: params[:search].downcase).paginate(:page => params[:page], :per_page => 6).order('created_at DESC')
 		else
-			@listings = current_user.listings.all
+			@listings = current_user.listings.paginate(:page => params[:page], :per_page => 6).order('created_at DESC')
 		end
 	end
 

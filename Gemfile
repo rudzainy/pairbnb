@@ -34,6 +34,8 @@ gem 'acts-as-taggable-on'
 # Image upload stuffs
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'mini_magick'
+# Pagination
+gem 'will_paginate'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

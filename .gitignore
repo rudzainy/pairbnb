@@ -17,7 +17,7 @@
 /tmp
 
 # Ignore secret key files
-/config/fb_keys.yml
+/config/keys.yml
 
 # Ignore listing image folder
 /public/uploads

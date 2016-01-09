@@ -5,6 +5,7 @@ class ReservationsController < ApplicationController
 	  	@reservation = Reservation.new
 	  	reservation = Reservation.new(reservation_params)
 	  	reservation.user_id = current_user.id
+	  	reservation.listing_id = params[:listing_id]
 	  	if reservation.save
 		  	redirect_to @listing, notice: "Success!"
 		  else
@@ -18,6 +19,6 @@ class ReservationsController < ApplicationController
 private
 	
 		def reservation_params
-			params.require(:reservation).permit(:checkin, :checkout, :listing_id)
+			params.require(:reservation).permit(:checkin, :checkout)
 		end
 end

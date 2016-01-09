@@ -81,6 +81,10 @@ a:hover {
 	text-decoration: underline;	
 }
 
+button a:hover {
+	text-decoration: none !important;	
+}
+
 nav {
 	margin: 0;
 	padding: 0;
@@ -140,6 +144,7 @@ hr {
 
 .nav-white {
 	background-color: white;
+	border-bottom: 1px solid $medium-light-grey; 
 }
 
 .nav-hover:hover {

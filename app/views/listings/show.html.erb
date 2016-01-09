@@ -42,8 +42,8 @@
 		<div class="tags"><%= display_tags(@listing) %></div>
 
 		<% if !current_user.nil? and current_user.id == @listing.user.id %>
-			<%= link_to 'Edit', edit_listing_path(@listing) %>
-			<%= link_to 'Delete', listing_path(@listing), method: 'delete' %>
+			<%= link_to (button_tag "Edit", class: "btn btn-block btn-large btn-pink"), edit_listing_path(@listing) %>
+			<%= link_to (button_tag "Delete", class: "btn btn-block btn-large btn-pink"), listing_path(@listing), method: 'delete' %>
 		<% end %>
 		<div id="listing-thumbnail">
 			<% @listing.images.each_with_index do |image, index| %>

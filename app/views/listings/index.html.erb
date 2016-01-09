@@ -1,32 +1,109 @@
-<% if logged_in? %>
-	<button class="btn btn-block btn-large btn-pink">Add new listing</button>
-<% end %>
-<div id="listing-container">
-	<% if !@listings.nil? %>
-		<div id="listing-main">
-			<% @listings.each do |listing| %>
-				<div class="listing-item">
-					<!--div class="listing-item-image" style="background: url(<%= listing.images[0].url if !listing.images[0].url.nil? %>); background-size: cover; background-position: 100% 50%;"-->
-					<div class="listing-item-image">
-						<%= link_to (image_tag listing.images[0]), listing_path(listing) %>
-					</div>
-					<div class="listing-item-title">
-						<%= link_to listing.title, listing_path(listing) %>
-					</div>
-					<div class="listing-item-info">
-						<div class="listing-location">
-							<%= listing.home_type %> · <%= listing.location.capitalize %> · <i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i>
+<div id="listing-divider">
+	<div id="listing-left">
+		<div id="listing-tools">
+			<% if logged_in? %>
+				<%= link_to (button_tag "Add new listing", class: "btn btn-block btn-large btn-pink"), new_listing_path %>
+			<% if !current_user.reservations.nil? %>
+				<% current_user.reservations.each do |reservation| %>
+					<hr>
+					<div class="listing-reservation">
+						<div class="listing-reservation-item">
+							<div class="listing-reservation-item">
+								<%= image_tag reservation.listing.images[0] if !reservation.listing.images[0].nil? %>
+							</div>
+							<div class="listing-reservation-item">
+								<%= reservation.listing.title %><br>
+								<%= reservation.checkin.strftime("%e %b %Y") %> until <%= reservation.checkout.strftime("%e %b %Y") %>
+							</div>
 						</div>
-						<div class="listing-item-user">
-							<a href="/users/<%= listing.user.id %>"><%= image_tag listing.user.avatar, class: 'listing-item-avatar' %></a>
-						</div>
+						<div class="listing-reservation-item">
+							<div class="listing-reservation-item">
+								<%= link_to (button_tag "Edit", class: "btn btn-block btn-large btn-pink"), edit_listing_path(reservation.listing) %>
+							</div>
+							<div class="listing-reservation-item">
+								<%= link_to (button_tag "Delete", class: "btn btn-block btn-large btn-pink"), listing_path(reservation.listing), method: 'delete' %>
+							</div>
+						</div>						
 					</div>
-				</div>
-			<% end%>
+				<% end %>
+			<% end %>
+		<% end %>
 		</div>
-		<div id="listing-map"></div>
-		<% else %>
-			<p>No listing yet</p>
-			<div class="host"><a href="<%= new_listing_path %>">Become a Host</a></div>
-	<% end %>
+		<div id="listing-container">
+			<% if !@listings.nil? %>
+				<div id="listing-main">
+					<% @listings.each do |listing| %>
+						<div class="listing-item">
+							<!--div class="listing-item-image" style="background: url(<%= listing.images[0].url if !listing.images[0].url.nil? %>); background-size: cover; background-position: 100% 50%;"-->
+							<div class="listing-item-image">
+								<%= link_to (image_tag listing.images[0]), listing_path(listing) %>
+							</div>
+							<div class="listing-item-title">
+								<%= link_to listing.title, listing_path(listing) %>
+							</div>
+							<div class="listing-item-info">
+								<div class="listing-location">
+									<%= listing.home_type %> · <%= listing.location.capitalize %> · <i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i>
+								</div>
+								<div class="listing-item-user">
+									<a href="/users/<%= listing.user.id %>"><%= image_tag listing.user.avatar, class: 'listing-item-avatar' %></a>
+								</div>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			<% else %>
+				<p>No listing yet</p>
+			<% end %>
+		</div>
+	</div>
+	<div id="listing-map">
+		<div id="listing-map-canvas"></div>
+	</div>
 </div>
+
+<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLEMAP_KEY'] %>">
+  </script>
+  <script type="text/javascript">
+    function set_map(state, city){
+      var mapOptions = {
+        center: new google.maps.LatLng(25.687944,-100.309403),
+        zoom: 13,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      var map = new google.maps.Map(document.getElementById("listing-map-canvas"),
+      mapOptions);
+      
+      if(state == ""){
+        address = city;
+      }else{
+        address = state + ',' + city;
+      }
+
+      var geocoder = new google.maps.Geocoder();
+
+      geocoder.geocode({
+        'address':address
+      },
+      
+      function(result, status){
+      	debugger;
+        if (status == google.maps.GeocoderStatus.OK){
+          map.setCenter(result[0].geometry.location);
+
+          var marker = new google.maps.Marker({
+            map: map,
+            position: result[0].geometry.location
+          });
+        }else{
+          alert("Geocode was not successful for the following reason: " + status);
+        }
+      });
+      return false;
+    }
+
+    $(document).ready(function(){
+      set_map('', '<%= @listings.first.location %>');
+    })
+  </script>

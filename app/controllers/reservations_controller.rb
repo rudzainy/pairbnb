@@ -9,11 +9,17 @@ class ReservationsController < ApplicationController
 	  	if reservation.save
 		  	redirect_to @listing, notice: "Success!"
 		  else
-			  redirect_to @listing, notice: "Unable to book a reservation"
+			  redirect_to @listing, notice: "Unable to book a reservation."
 			end
 		else
 			redirect_to sign_in_path, notice: "Please sign in to continue."
 		end
+  end
+
+  def destroy
+  	reservation = Reservation.find(params[:id])
+  	reservation.destroy
+  	redirect_to listings_path
   end
 
 private

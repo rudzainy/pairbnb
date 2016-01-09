@@ -17,12 +17,7 @@
 							</div>
 						</div>
 						<div class="listing-reservation-item">
-							<div class="listing-reservation-item">
-								<%= link_to (button_tag "Edit", class: "btn btn-block btn-large btn-pink"), edit_listing_path(reservation.listing) %>
-							</div>
-							<div class="listing-reservation-item">
-								<%= link_to (button_tag "Delete", class: "btn btn-block btn-large btn-pink"), listing_path(reservation.listing), method: 'delete' %>
-							</div>
+							<%= link_to (button_tag "Delete", class: "btn btn-block btn-large btn-pink"), listing_reservation_path(reservation.listing, reservation), method: 'delete' %>
 						</div>						
 					</div>
 				<% end %>
@@ -34,7 +29,6 @@
 				<div id="listing-main">
 					<% @listings.each do |listing| %>
 						<div class="listing-item">
-							<!--div class="listing-item-image" style="background: url(<%= listing.images[0].url if !listing.images[0].url.nil? %>); background-size: cover; background-position: 100% 50%;"-->
 							<div class="listing-item-image">
 								<%= link_to (image_tag listing.images[0]), listing_path(listing) %>
 							</div>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update, :destroy]
   resources :users, controller: 'users', only: 'create'
   resources :listings do
-    resources :reservations, only: [:create]
+    resources :reservations, only: [:create, :destroy]
   end
 
   get 'tags/:tag', to: 'listings#index', as: :tag

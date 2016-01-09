@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   has_many :listings, :dependent => :destroy
   has_many :authentications, :dependent => :destroy
+  has_many :reservations, :dependent => :destroy
   validates :email, uniqueness: true, presence: true
 
   def self.create_with_auth_and_hash(authentication,auth_hash)

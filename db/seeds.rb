@@ -54,7 +54,7 @@ User.all.each do |user|
 		listing = user.listings.create(title: Faker::Hipster.sentence(3, false),
 																	 description: Faker::Hipster.paragraph(3..10),
 																	 home_type: ["Apartment", "Condominium", "Townhouse", "Villa", "Studio", "Loft", "Dorm", "Castle", "Tent", "Boat"].sample,
-																	 location: user.location,
+																	 location: user.location.downcase,
 																	 guest: rand(1..6),
 																	 bedroom: rand(1..5),
 																	 price: rand(40..500),

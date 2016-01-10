@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   get 'tags/:tag', to: 'listings#index', as: :tag
+  post "/filter_listings", to: 'listings#price_range', as: 'filter_listings'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

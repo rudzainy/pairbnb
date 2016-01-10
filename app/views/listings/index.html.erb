@@ -3,48 +3,41 @@
 		<div id="listing-tools">
 			<% if logged_in? %>
 				<%= link_to (button_tag "Add new listing", class: "btn btn-block btn-large btn-pink"), new_listing_path %>
-			<% if !current_user.reservations.nil? %>
-				<% current_user.reservations.each do |reservation| %>
-					<hr>
-					<div class="listing-reservation">
-						<div class="listing-reservation-item">
+				<% if !current_user.reservations.empty? %>
+					<h3 class="listing-tools-title">Your Reservations</h3>
+					<% current_user.reservations.each do |reservation| %>
+						<hr>
+						<div class="listing-reservation">
 							<div class="listing-reservation-item">
-								<%= image_tag reservation.listing.images[0] if !reservation.listing.images[0].nil? %>
-							</div>
-							<div class="listing-reservation-item">
-								<%= reservation.listing.title %><br>
-								<%= reservation.checkin.strftime("%e %b %Y") %> until <%= reservation.checkout.strftime("%e %b %Y") %>
-							</div>
-						</div>
-						<div class="listing-reservation-item">
-							<%= link_to (button_tag "Delete", class: "btn btn-block btn-large btn-pink"), listing_reservation_path(reservation.listing, reservation), method: 'delete' %>
-						</div>						
-					</div>
-				<% end %>
-			<% end %>
-		<% end %>
-		</div>
-		<div id="listing-container">
-			<% if !@listings.nil? %>
-				<div id="listing-main">
-					<% @listings.each do |listing| %>
-						<div class="listing-item">
-							<div class="listing-item-image">
-								<%= link_to (image_tag listing.images[0]), listing_path(listing) %>
-							</div>
-							<div class="listing-item-title">
-								<%= link_to listing.title, listing_path(listing) %>
-							</div>
-							<div class="listing-item-info">
-								<div class="listing-location">
-									<%= listing.home_type %> · <%= listing.location.capitalize %> · <i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i>
+								<div class="listing-reservation-item">
+									<%= image_tag reservation.listing.images[0] if !reservation.listing.images[0].nil? %>
 								</div>
-								<div class="listing-item-user">
-									<a href="/users/<%= listing.user.id %>"><%= image_tag listing.user.avatar, class: 'listing-item-avatar' %></a>
+								<div class="listing-reservation-item">
+									<%= reservation.listing.title %><br>
+									<%= reservation.checkin.strftime("%e %b %Y") %> until <%= reservation.checkout.strftime("%e %b %Y") %>
 								</div>
 							</div>
+							<div class="listing-reservation-item">
+								<%= link_to (button_tag "Delete", class: "btn btn-block btn-large btn-pink"), listing_reservation_path(reservation.listing, reservation), method: 'delete' %>
+							</div>						
 						</div>
 					<% end %>
+				<% end %>
+			<% end %>
+			<h3 class="listing-tools-title">Filter</h3>
+			<hr>
+			<div class="listing-reservation-item">
+				<%= form_tag filter_listings_path, id: 'filter-form', remote: true do %>
+					<%= hidden_field_tag :location, @listings.first.location %>
+					Price Range <%= text_field_tag :from, nil, class: 'form-control' %> to <%= text_field_tag :to, nil, class: 'form-control' %> <%= submit_tag 'Filter', class: 'btn btn-medium btn-pink', id: 'filter-btn' %>
+				<% end %>
+			</div>
+		</div>
+		<div id="listing-container">
+			<div id="loading"></div>
+			<% if !@listings.nil? %>
+				<div id="listing-main">
+					<%= render 'listing_item', object: @listings %>
 				</div>
 			<% else %>
 				<p>No listing yet</p>
@@ -88,7 +81,6 @@
       },
       
       function(result, status){
-      	debugger;
         if (status == google.maps.GeocoderStatus.OK){
           map.setCenter(result[0].geometry.location);
 

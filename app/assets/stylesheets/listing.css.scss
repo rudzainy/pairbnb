@@ -89,6 +89,7 @@ width: 55%;
 #listing-container {
 	display: flex;
 	flex-direction: row;
+	position: relative;
 }
 
 #listing-main {
@@ -103,6 +104,10 @@ width: 55%;
 #listing-tools {
 	padding: 20px;
 	background-color: white;
+}
+
+.listing-tools-title {
+	padding-top: 10px;
 }
 
 #listing-map {
@@ -181,6 +186,7 @@ width: 55%;
 	display: flex;
 	padding-right: 20px;
 }
+
 .reservation-container {
 	display: flex;
 	flex-wrap: wrap;
@@ -189,4 +195,14 @@ width: 55%;
 
 .reservation-item {
 	width: 120px;
+}
+
+#loading {
+	top: 0;
+	left: 0;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.9);
+	z-index: 1000;
 }

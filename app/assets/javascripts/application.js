@@ -15,4 +15,15 @@
 //= require jquery-ui.min
 //= require turbolinks
 //= require facebook
+//= require_self
 
+$(document).ready(function(){
+  $('#loading').hide();
+  
+  $('#filter-btn').on('click', function(event){
+  	// event.preventDefault();
+
+  	$('#loading').show();
+  	
+  })
+});

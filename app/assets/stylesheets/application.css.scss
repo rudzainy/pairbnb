@@ -450,3 +450,52 @@ footer {
     }
   }
 }
+
+#loading {
+	display: none;
+}
+
+
+// ---- Email Style ---- //
+
+.email-bg {
+	background-color: $light-grey;
+	padding: 10px;
+}
+
+.email-container {
+	max-width: 500px;
+	font-family: sans-serif;
+	margin: 0 auto;
+	background-color: white;
+	overflow: hidden;
+	border-radius: 3px;
+	text-align: center;
+	p {
+		padding: 20px;
+		font-size: 18px;
+		font-weight: 300;
+		color: $dark-grey;
+		line-height: 1.5
+	}
+	a {
+		color: $pink;
+	}
+}
+
+.pre-header {
+	@extend .email-container;
+	background-color: $light-grey;
+	color: $light-grey;
+	font-size: 5px;
+}
+
+
+
+
+
+
+
+
+
+

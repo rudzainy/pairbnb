@@ -68,6 +68,6 @@ class ListingsController < ApplicationController
 
 		def listing_params
 			params[:listing][:location].downcase!
-			params.require(:listing).permit(:title, :home_type, :description, :home_type, :location, :guest, :bedroom, :price, {images: []}, :tag_list, :breakfast)
+			params.require(:listing).permit(:title, :description, :home_type, :location, :guest, :bedroom, :price, {images: []}, :tag_list, :breakfast)
 		end
 end

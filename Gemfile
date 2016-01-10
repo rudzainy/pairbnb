@@ -38,6 +38,8 @@ gem 'mini_magick'
 gem 'will_paginate'
 # Gems for background jobs work
 gem 'sidekiq'
+# Use Faker to seed fake data
+gem 'faker'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

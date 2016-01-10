@@ -1,2 +1,0 @@
-GMAIL_USERNAME: rudzainy
-GMAIL_PASSWORD: Shajar8590

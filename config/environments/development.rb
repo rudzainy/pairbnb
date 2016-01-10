@@ -1,4 +1,12 @@
 Rails.application.configure do
+
+  config.before_configuration do
+    env_file = File.join(Rails.root, 'config', 'keys.yml')
+    YAML.load(File.open(env_file)).each do |key, value|
+      ENV[key.to_s] = value
+    end if File.exists?(env_file)
+  end
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -43,15 +51,17 @@ Rails.application.configure do
   # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.perform_deliveries = true
   # config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: 'localhost:3000' }
-  # SMTP settings for Gmail
+  # config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.delivery_method = :smtp
+  # SMTP settings for Mailgun
   ActionMailer::Base.smtp_settings = {
-    :address              => "smtp.gmail.com",
+    :address              => "smtp.mailgun.org",
     :port                 => 587,
-    :user_name            => ENV['GMAIL_USERNAME'],
-    :password             => ENV['GMAIL_PASSWORD'],
-    :authentication       => :plain,
+    :domain               => ENV['MAIL_DOMAIN']
+    :user_name            => ENV['MAIL_USERNAME'],
+    :password             => ENV['MAIL_PASSWORD'],
+    :authentication       => :plain
     # :enable_starttls_auto => true
-    :openssl_verify_mode  => 'none'
+    # :openssl_verify_mode  => 'none'
   }
 end

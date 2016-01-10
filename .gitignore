@@ -21,3 +21,6 @@
 
 # Ignore listing image folder
 /public/uploads
+
+# Ignore redis binary dump (dump.rdb) files
+*.rdb

@@ -1,5 +1,4 @@
 #Pairbnb
----
 This is an Airbnb clone built on Ruby on Rails
 
 ###Getting Started
@@ -26,6 +25,7 @@ This will create an admin user, a random number of dummy users and a random numb
 3. Move user's listings and reservations to user's profile page
 4. User's avatar not saved when seeding
 5. Pagination on index page 
+6. Confirm password bug for user sign in
 
 ###Future Feature
 ---

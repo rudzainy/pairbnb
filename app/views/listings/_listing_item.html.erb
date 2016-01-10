@@ -4,11 +4,11 @@
 			<%= link_to (image_tag listing.images[0]), listing_path(listing) %>
 		</div>
 		<div class="listing-item-title">
-			<%= link_to listing.title, listing_path(listing) %>
+			<%= link_to listing.title[0..37].gsub(/\s\w+\s*$/,'...'), listing_path(listing) %>
 		</div>
 		<div class="listing-item-info">
 			<div class="listing-location">
-				<%= listing.home_type %> · <%= listing.location.capitalize %> · <i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i>
+				<%= listing.home_type %> · <%= listing.location.titleize %> · <i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i>
 			</div>
 			<div class="listing-item-user">
 				<a href="/users/<%= listing.user.id %>"><%= image_tag listing.user.avatar, class: 'listing-item-avatar' %></a>

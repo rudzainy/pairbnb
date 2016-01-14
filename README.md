@@ -5,6 +5,9 @@ This is an Airbnb clone built on Ruby on Rails
 ---
     # Install the required gems
     bundle install
+
+    # Update username in database.yml
+    username: <your_username>
     
     # Create and migrate the database
     rake db:create && rake db:migrate
@@ -34,4 +37,5 @@ This will create an admin user, a random number of dummy users and a random numb
 3. Full responsive layout
 
 ###Author
+---
 [Rudzainy](http://www.rudzainy.com)

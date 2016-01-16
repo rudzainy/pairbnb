@@ -64,10 +64,12 @@ User.all.each do |user|
 		listing.save!
 		total += 1
 	end
+	puts "==============================================================================="
 	puts "#{total} listing(s) created for #{user.name}!"
+	puts "==============================================================================="
 end
-puts "==============================================================================="
-puts "Total number of listings created: #{Listing.all.count}\n\n"
+puts "Total number of listings created: #{Listing.all.count}"
+puts "===============================================================================\n\n"
 
 puts "\n=============================== (\"\\( ^ o ^ )/\") ==============================="
 puts "              Success! You can login using the credentials below:"

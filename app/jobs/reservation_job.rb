@@ -1,7 +1,7 @@
 class ReservationJob < ActiveJob::Base
 	queue_as :default
 
-	def perform(customer, host, reservation_id)
+	def perform_later(customer, host, reservation_id)
 		@listing = Reservation.find(reservation_id).listing
 		@host = host
 		@customer = customer

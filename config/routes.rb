@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'search', to: 'search#search'
+  
   get 'auth/:provider/callback', to: 'sessions#create_from_omniauth'
 
   resource :home, only: [:index]

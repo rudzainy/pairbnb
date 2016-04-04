@@ -14,7 +14,7 @@ class ListingsController < ApplicationController
 		if current_user
 			@listing = Listing.new
 		else
-			redirect_to sign_in_path, notice: "Please sign in to continue."  and return
+			redirect_to sign_in_path, notice: "Please sign in to continue." and return
 		end
 	end
 

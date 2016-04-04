@@ -15,7 +15,7 @@ def randomize_tags
 end
 
 # Create admin
-User.create(email: "tom@cruise.com", 
+User.create(email: "tom@cruise.com",
 						password: "123456",
 						name: "Tom Cruise",
 						avatar: File.open(Rails.root + 'app/assets/images/mabul.jpg'),
@@ -32,7 +32,7 @@ puts "==========================================================================
 
 puts "\n==============================================================================="
 rand(5..15).times do
-	user = User.create(email: Faker::Internet.email, 
+	user = User.create(email: Faker::Internet.email,
 										 password: "123456",
 										 name: Faker::Name.name,
 										 avatar: Faker::Avatar.image,
@@ -60,7 +60,7 @@ User.all.each do |user|
 																	 price: rand(40..500),
 																	 breakfast: [true, false].sample,
 																	 tag_list: randomize_tags)
-		listing.images = [Pathname.new(Rails.root + "app/assets/images/listings/#{rand(1..12)}.jpg").open]
+		listing.images = [File.open(Rails.root + "app/assets/images/listings/#{rand(1..12)}.jpg")]
 		listing.save!
 		total += 1
 	end
